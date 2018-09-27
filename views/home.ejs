@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Home</title>
+      <%- include("sections/header") %>
+  </head>
+      <%- include("sections/menu") %>
+  <body>
+
+
+    <div id="content">
+      
+      <section class="header-parallax">
+        <h1>Dreams at the tap of a key</h1>
+      </section>
+
+      <% posts.forEach( post =>{ %>
+        <article class="animated fadeInLeft">
+          <h1><%- post.title %></h1>
+          <%- post.content %>
+        </article>
+      <% }) %>
+
+    </div>
+
+
+
+  </body>
+
+  <footer>
+    SquirrelNET 2018&copy;
+  </footer>
+
+</html>

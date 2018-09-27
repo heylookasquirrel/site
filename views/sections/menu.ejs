@@ -1,0 +1,14 @@
+<nav>
+  <ul>
+    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="/portfolio"><i class="fas fa-file-code"></i> Portfolio</a></li>
+    <li><a href="/contact"><i class="fas fa-phone"></i> Contact </a></li>
+    <div></div>
+    <% if(permissions == -1){ %>
+    <li class="menu-right"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+    <% } %>
+    <% if(permissions >= 0){ %>
+    <li class="menu-right"><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    <% } %>
+  </ul>
+</nav>

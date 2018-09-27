@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Home</title>
+      <%- include("sections/header") %>
+  </head>
+      <%- include("sections/menu") %>
+  <body>
+
+    <form class="loginContainer" method="post" action="/login">
+
+      <h1>Login</h1>
+      
+      <input class="loginField" name="username" type="text" value="" placeholder="Username"/>
+      </br>
+
+      <input class="loginField" name="password" type="password" value="" placeholder="Password"/>
+      </br>
+      <div class="lostPwd">Lost Password?</div>
+      <input type="submit" class="submit" value="Login"/>
+
+    </form>
+
+  </body>
+
+  <footer>
+    SquirrelNET 2018&copy;
+  </footer>
+
+</html>

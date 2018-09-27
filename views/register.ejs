@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Home</title>
+      <%- include("sections/header") %>
+  </head>
+      <%- include("sections/menu") %>
+  <body>
+
+
+
+    <form class="loginContainer" method="post" action="/register">
+
+      <h1>New User</h1>
+
+      <input class="loginField" name="username" type="text" value="" placeholder="Username"/>
+      <input class="loginField" name="password" type="password" value="" placeholder="Password"/>
+      <input class="loginField" name="password2" type="password" value="" placeholder="Confirm Password"/>
+      <input class="loginField" name="email" type="text" value="" placeholder="Email"/>
+      <input type="submit" class="submit" value="Register"/>
+      <% if(errors){ %>
+        <div class="errors">Attention: </br> <% errors.forEach(i =>{ %>
+            <%= i.msg %></br>
+          <%   }) %></div>
+      <% } %>
+    </form>
+
+  </body>
+
+  <footer>
+    SquirrelNET 2018&copy;
+  </footer>
+
+</html>
