@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Home</title>
+      <%- include("sections/header") %>
+  </head>
+      <%- include("sections/menu") %>
+  <body>
+
+    <%- include("sections/sidebar") %>
+
+  <div class="listPosts">
+
+    <% posts.forEach( post => { %>
+      <div class="postContainer">
+        <div class=""><%- post.id %></div>
+        <div class=""><%- post.title %></div>
+        <div class="largeContent"><%- post.content %></div>
+        <div class="mobileContent"><%- post.content.substring(0,50) + "..." %></div>
+        <div class=""><a href="/dashboard/editpost?id=<%- post.id %>">Edit</a></div>
+        <div class=""><a href="/dashboard/deletepost?id=<%- post.id %>">Delete</a></div>
+      </div>
+    <% }) %>
+
+
+
+  </div>
+
+
+  </body>
+
+  <footer>
+    SquirrelCMS 2018&copy;
+  </footer>
+
+</html>

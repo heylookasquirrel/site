@@ -1,0 +1,15 @@
+<aside class="dashboard-sidebar">
+  <img class="logo-sidebar" src="/img/logo.png"></img>
+  <h2 class="sidebar-title"><span>SquirrelCMS</span></h2>
+
+  <ul>
+    <% if(page == "overview"){ %> <li class="selected-dash"> <% }else{ %> <li> <% } %>
+    <a href="/dashboard" ><i class="fas fa-tachometer-alt"></i> Overview </a></li>
+    <% if(page == "posts"){ %> <li class="selected-dash"> <% }else{ %> <li> <% } %>
+    <a href="/dashboard/posts" ><i class="fas fa-pencil-alt"></i> Posts </a></li>
+    <% if(page == "portfolio"){ %> <li class="selected-dash"> <% }else{ %> <li> <% } %>
+    <a href="/dashboard/portfolio" ><i class="fas fa-file"></i> Portfolio </a></li>
+    <% if(page == "settings"){ %> <li class="selected-dash"> <% }else{ %> <li><% } %>
+    <a href="/dashboard/settings" ><i class="fas fa-cog"></i> Settings </a></li>
+  </ul>
+</aside>

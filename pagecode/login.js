@@ -1,7 +1,7 @@
 const app = require("../main.js").app
 const passport = require("../main.js").passport
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login', failureFlash: false }),
+app.post('/login', passport.authenticate('local', { successRedirect: '/dashboard', failureRedirect: '/login', failureFlash: false }),
 	function (req, res) {
 	res.redirect('/');
 })
