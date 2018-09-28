@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Home</title>
+      <%- include("sections/header") %>
+  </head>
+      <%- include("sections/menu") %>
+  <body>
+
+    <%- include("sections/sidebar") %>
+
+  <div class="overview">
+
+    <a href="/dashboard/newproject"><button >New Project</button></a>
+
+      <div class="portfolioContainer">
+        <div>Title</div>
+        <div>Description</div>
+        <div>Options</div>
+
+      </div>
+      <% projects.forEach( project => { %>
+        <div class="portfolioContainer">
+          <div><b><%- project.title %></b></div>
+          <div><%= project.description %></div>
+          <a href="/dashboard/editproject?id=<%-project.id%>">Edit</a>
+          <a href="/dashboard/deleteproject?id=<%-project.id%>">Delete</a>
+        </div>
+      <% }) %>
+
+
+  </div>
+
+
+  </body>
+
+  <%- include("sections/footer") %>
+
+</html>

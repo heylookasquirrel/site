@@ -9,7 +9,6 @@ app.get('/dashboard', app.ensureAuthenticated, function(req, res){
     let totalPosts = results[0]
     totalPosts = totalPosts[fields[0].name]
 
-    console.log(results)
     let stats = {}
     stats.totalPosts = totalPosts
     res.render("dashboard",{

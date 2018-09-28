@@ -39,9 +39,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.3/tinymce.min.js"></script>
 
 
+
   <script>
     tinymce.init({
-     selector: '#editor'
+     selector: '#editor',
+     theme: 'modern',
+     plugins: 'advlist autolink link image lists charmap print preview code',
+     branding: false,
+     image_advtab: true,
     });
 
   </script>

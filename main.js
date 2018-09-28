@@ -11,6 +11,7 @@ const bcrypt = require("bcryptjs")
 const mysql = require('mysql2');
 const settings = require("./settings.json")
 const passport = require("passport");
+const fileUpload = require('express-fileupload');
 app.db = mysql.createConnection({
     host:settings.mysqlhost,
     user:settings.mysqluser,
@@ -23,7 +24,11 @@ app.use("/", express.static("public"));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 1000000}));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(expressValidator())
+app.use(expressValidator());
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 },
+}));
+
 
 app.use(session({
   secret:'X2w`ar(Umqd3PBAA',

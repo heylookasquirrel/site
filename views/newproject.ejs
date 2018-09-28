@@ -10,7 +10,7 @@
 
   <div class="listPosts">
 
-    <form id="form" class="editForm" method="post" action="/dashboard/newpost">
+    <form id="form" class="editForm" method="post" action="/dashboard/newproject" encType="multipart/form-data">
       <% if(errors){ %>
         <div class="errors">Attention: </br> <% errors.forEach(i =>{ %>
             <%= i.msg %></br>
@@ -19,9 +19,21 @@
       <label class="editLabel" for="title">Title</label>
       <input class="editField" name="title" type="text" value="" placeholder="Post Title"/>
 
-      <textarea name="content" id="editor"></textarea>
+      <label class="editLabel" for="link">Link</label>
+      <input class="editField" name="link" type="text" value="" placeholder="Project URL"/>
 
-      <input type="submit" class="editSubmit" value="Create Post"/>
+      <label class="editLabel" for="git">Git</label>
+      <input class="editField" name="git" type="text" value="" placeholder="Git Url"/>
+
+      <label class="editLabel" for="language">Languages</label>
+      <input class="editField" name="language" type="text" value="" placeholder="C++, Java, Javascript..."/>
+
+      <label class="editLabel" for="image">Thumbnail</label>
+      <input class="editField" name="image" type="file" value=""/>
+
+      <textarea name="description" id="editor"></textarea>
+
+      <input type="submit" class="editSubmit" value="Create Project"/>
 
 
     </form>
