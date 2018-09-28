@@ -10,19 +10,18 @@
 
   <div class="listPosts">
 
-    <form id="form" class="editForm" method="post" action="/dashboard/editpost">
+    <form id="form" class="editForm" method="post" action="/dashboard/newpost">
       <% if(errors){ %>
         <div class="errors">Attention: </br> <% errors.forEach(i =>{ %>
             <%= i.msg %></br>
           <%   }) %></div>
       <% } %>
-      <input name="id" type="hidden" value="<%- post.id %>">
       <label class="editLabel" for="title">Title</label>
-      <input class="editField" name="title" type="text" value="<%- post.title %>" />
+      <input class="editField" name="title" type="text" value="" placeholder="Post Title"/>
 
-      <textarea name="content" id="editor"><%- post.content %></textarea>
+      <textarea name="content" id="editor"></textarea>
 
-      <input type="submit" class="editSubmit" value="Edit Post"/>
+      <input type="submit" class="editSubmit" value="Create Post"/>
 
 
     </form>

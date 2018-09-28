@@ -12,6 +12,7 @@ app.get('/dashboard/posts', app.ensureAuthenticated, function(req, res){
       object.id = post.id;
       object.title = post.title;
       object.content = post.content.substring(0,100) + "...";
+      object.contentSM = post.content.substring(0,50) + "...";
       posts.push(object)
     })
 

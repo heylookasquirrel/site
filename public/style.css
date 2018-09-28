@@ -10,11 +10,13 @@
 nav{
   background:#677e74;
   width:100%;
+  height:42px;
 }
 
 nav ul{
   display:grid;
-  grid-template-columns: 120px 120px 120px auto 120px;
+  height:100%;
+  grid-template-columns: 120px 120px 120px auto 140px 120px;
 }
 
 nav a{
@@ -77,8 +79,8 @@ footer{
 
   nav ul{
     display:grid;
-    font-size:1px;
-    grid-template-columns: 60px 60px 60px auto 60px;
+    font-size:0px;
+    grid-template-columns: 60px 60px 60px auto 60px 60px;
   }
 
   nav ul li{
@@ -104,6 +106,34 @@ footer{
   }
 
 
+}
+
+button {
+    -moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+  	-webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+  	box-shadow:inset 0px 1px 3px 0px #91b8b3;
+  	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #677e74), color-stop(1, #6c7c7c));
+  	background:-moz-linear-gradient(top, #677e74 5%, #6c7c7c 100%);
+  	background:-webkit-linear-gradient(top, #677e74 5%, #6c7c7c 100%);
+  	background:-o-linear-gradient(top, #677e74 5%, #6c7c7c 100%);
+  	background:-ms-linear-gradient(top, #677e74 5%, #6c7c7c 100%);
+  	background:linear-gradient(to bottom, #677e74 5%, #6c7c7c 100%);
+  	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#677e74', endColorstr='#6c7c7c',GradientType=0);
+  	background-color:#677e74;
+  	-moz-border-radius:5px;
+  	-webkit-border-radius:5px;
+  	border-radius:5px;
+  	border:1px solid #566963;
+  	display:inline-block;
+  	cursor:pointer;
+  	color:#ffffff;
+  	font-family:Arial;
+  	font-size:15px;
+  	font-weight:bold;
+  	padding:12px 16px;
+  	text-decoration:none;
+  	text-shadow:0px -1px 0px #2b665e;
+    margin:15px;
 }
 
 
@@ -290,17 +320,27 @@ footer{
   padding-right:20px;
   padding-top:20px;
 }
-
 .postContainer{
   background:white;
   padding:15px;
   display:grid;
   grid-column-gap:15px;
-  grid-template-columns: 15px minmax(100px, 1fr) auto 50px 50px;
+  grid-template-columns: 15px 80px minmax( 100px, 1fr) 50px 50px;
   border-bottom: solid black 1px;
 }
 
+.postid{
+  text-align:center;
+}
+
+.largeContent{
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 .mobileContent{
+  overflow-wrap: break-word;
+  word-wrap: break-word;
   display:none;
 }
 
@@ -317,7 +357,7 @@ footer{
     padding:5px;
     display:grid;
     grid-column-gap:5px;
-    grid-template-columns: 15px 80px auto 50px 50px;
+    grid-template-columns: 15px 80px minmax( 100px, 1fr) 50px 50px;
     border-bottom: solid black 1px;
   }
 
@@ -326,10 +366,14 @@ footer{
 @media only screen and (max-width: 800px) {
 
   .largeContent {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     display:none;
   }
 
   .mobileContent {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
     display:block;
   }
 
@@ -341,7 +385,6 @@ footer{
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   padding:10px;
   background:white;
-
   font-size:18px;
 }
 
@@ -371,17 +414,45 @@ footer{
 	padding:12px 16px;
 	text-decoration:none;
 	text-shadow:0px -1px 0px #2b665e;
+  margin:20px 0;
+}
+
+.deleteSubmit{
+  -moz-box-shadow:inset 0px 1px 3px 0px #2a2218;
+	-webkit-box-shadow:inset 0px 1px 3px 0px #2a2218;
+	box-shadow:inset 0px 1px 3px 0px #2a2218;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2a2218), color-stop(1, #b34332));
+	background:-moz-linear-gradient(top, #2a2218 5%, #b34332 100%);
+	background:-webkit-linear-gradient(top, #2a2218 5%, #b34332 100%);
+	background:-o-linear-gradient(top, #2a2218 5%, #b34332 100%);
+	background:-ms-linear-gradient(top, #2a2218 5%, #b34332c 100%);
+	background:linear-gradient(to bottom, #2a2218 5%, #b34332 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b54b3a', endColorstr='#7a2a1d',GradientType=0);
+	background-color:#2a2218;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+  width:120px;
+	border:1px solid #2a2218;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:12px 16px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #2b665e;
+  margin:20px 0;
 }
 
 #editor{
     width: 100%;
     padding:5px;
     height:500px;
-    margin-bottom:10px;
     background:#eeeeee;
     overflow-y: auto
 }
-
 
 .editField {
   width: 100%;

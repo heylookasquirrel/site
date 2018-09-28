@@ -5,9 +5,11 @@
     <li><a href="/contact"><i class="fas fa-phone"></i> Contact </a></li>
     <div></div>
     <% if(permissions == -1){ %>
+    <div></div>
     <li class="menu-right"><a href="/login"><i class="fas fa-sign-in-alt"></i> Login</a></li>
     <% } %>
     <% if(permissions >= 0){ %>
+    <li class="menu-right"><a href="/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
     <li class="menu-right"><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
     <% } %>
   </ul>
