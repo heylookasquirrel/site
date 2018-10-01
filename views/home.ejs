@@ -10,11 +10,11 @@
     <div id="content">
 
       <section class="header-parallax">
-        <h1>Dreams at the tap of a key</h1>
+        <h1><%= settings.headline %></h1>
       </section>
 
       <% posts.forEach( post =>{ %>
-        <article class="animated fadeInLeft">
+        <article class="animated <%= settings.animation %>">
           <h1><%- post.title %></h1>
           <%- post.content %>
         </article>

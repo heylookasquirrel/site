@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Portfolio</title>
+      <%- include("sections/header") %>
+  </head>
+      <%- include("sections/menu") %>
+  <body>
+
+
+    <h1 class="title">Portfolio</h1>
+    <div id="portfolio">
+
+      <% projects.forEach( project =>{ %>
+        <article class="project animated fadeInLeft">
+          <a href="portfolio/project?id=<%- project.id%>">
+          <% if(!project.image){ %>
+            <h2><%- project.language %></h2>
+          <% }else{ %>
+            <img src="/img/projects/<%-project.image%>">
+          <% } %>
+
+          <h1><%- project.title %></h1>
+          <%- project.language %></a>
+        </article>
+      <% }) %>
+
+    </div>
+
+
+
+  </body>
+
+  <%- include("sections/footer") %>
+
+</html>
