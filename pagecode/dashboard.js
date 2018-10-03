@@ -11,9 +11,28 @@ app.get('/dashboard', app.ensureAuthenticated, function(req, res){
 
     let stats = {}
     stats.totalPosts = totalPosts
-    res.render("dashboard",{
-      page:"overview",
-      stats:stats
+
+    app.db.query('SELECT COUNT(*) FROM `portfolio`', (err, results, fields) =>{
+
+      stats.totalProjects = results[0]
+      stats.totalProjects = stats.totalProjects[fields[0].name]
+
+      app.db.query('SELECT * FROM `analytics`', (err, results, fields) =>{
+
+        let object = []
+
+        results.forEach( page => {
+          object.push(page);
+        })
+
+        stats.pages = object;
+
+        res.render("dashboard",{
+          page:"overview",
+          stats:stats
+        })
+
+      })
     })
   })
 

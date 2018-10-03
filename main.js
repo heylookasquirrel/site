@@ -12,6 +12,8 @@ const mysql = require('mysql2');
 const settings = require("./settings.json")
 const passport = require("passport");
 const fileUpload = require('express-fileupload');
+
+//Create database connection
 app.db = mysql.createConnection({
     host:settings.mysqlhost,
     user:settings.mysqluser,
@@ -19,24 +21,28 @@ app.db = mysql.createConnection({
     password:settings.mysqlpassword
 })
 
+
 app.set('view engine','ejs');
 app.use("/", express.static("public"));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 1000000}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
+//File upload limit set
 app.use(fileUpload({
   limits: { fileSize: 50 * 1024 * 1024 },
 }));
 
-
+//replace secret for cookie sessions
 app.use(session({
   secret:'X2w`ar(Umqd3PBAA',
   saveUninitialized: true,
   resave:true
 }))
+
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(function(req, res, next){
   //checks if session is created
   if(req.session.passport != undefined){
@@ -57,11 +63,46 @@ app.use(function(req, res, next){
   }
 })
 
+//setup local variables for user per session
 app.use(function (req, res, next) {
   res.locals.user = req.user || null;
   next();
 });
 
+app.registeredPages = []
+//analytics code
+app.use(function (req, res, next) {
+
+  let properRoute = false;
+  app.registeredPages.forEach( url => {
+    if(req.path == url){
+      properRoute = true;
+      return;
+    }
+  })
+  if(properRoute){
+    app.db.query('SELECT `url` FROM `analytics` WHERE `url` = ?',
+    [req.path], (err, results, fields) =>{
+      if(err) return;
+      if(results.length == 0){
+        //create entry
+        app.db.query('INSERT INTO `analytics` (`url`, `views`) VALUES (?,?)',
+        [req.path,1], (err, results, fields) =>{
+        })
+      }else{
+        //add to entry
+        app.db.query('UPDATE `analytics` SET `views` = `views` + 1 WHERE `url` = ?',
+        [req.path], (err, results, fields) =>{
+        })
+      }
+
+    })
+  }
+
+  next();
+});
+
+//start server
 http.listen(80, function(){
   init()
   console.log('listening on port:80');
@@ -91,7 +132,7 @@ app.isModerator = (req, res, next)=> {
     res.redirect('/music');
   }
 }
-
+//Uses bcrypt to has password
 app.createUser = (newUser, callback) =>{
   bcrypt.genSalt(10, function(err, salt) {
 	    bcrypt.hash(newUser.password, salt, function(err, hash) {
@@ -100,7 +141,7 @@ app.createUser = (newUser, callback) =>{
 	    });
 	});
 }
-
+//gets user from database
 app.getUser = (username, callback) =>{
   app.db.query('SELECT * FROM `users` WHERE `username` = ?',
   [username,username], (err, results, fields) =>{
@@ -127,6 +168,7 @@ app.getUser = (username, callback) =>{
   })
 }
 
+//login function
 app.comparePassword = (password, hash, callback)=>{
   bcrypt.compare(password, hash, function(err, isMatch) {
     	if(err) throw err;
@@ -134,7 +176,7 @@ app.comparePassword = (password, hash, callback)=>{
 	});
 }
 
-
+//sets passport strategy
 passport.use(new LocalStrategy(
 	 (username, password, done) => {
 		app.getUser(username, function (err, user) {
@@ -171,12 +213,35 @@ passport.deserializeUser(function (id, done) {
 module.exports = { app, passport};
 init()
 
-
+//starts reading all pages in /pagecode
 function init(){
   //Looks for each js file in the pagecode folder
   let normalizedPath = require("path").join(__dirname, "pagecode");
   fs.readdirSync(normalizedPath).forEach(function(file) {
     console.log("loaded " + file)
     require("./pagecode/" + file);
+  });
+
+  app._router.stack.forEach(function(r){
+  if (r.route && r.route.path){
+    app.registeredPages.push(r.route.path)
+    }
+  })
+
+  app.registeredPages.forEach( (page, index) =>{
+    if(page == app.registeredPages[index-1] ||
+      page.includes("dashboard") ||
+      page.includes("login") ||
+      page.includes("logout")){
+      app.registeredPages.splice(index, 1);
+    }
+  })
+
+  app.registeredPages.splice(app.registeredPages.length - 1, 1)
+
+
+
+  app.get('*', function(req, res){
+
   });
 }

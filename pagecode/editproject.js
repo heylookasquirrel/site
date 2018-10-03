@@ -56,7 +56,7 @@ app.post('/dashboard/editproject', app.ensureAuthenticated, function(req, res){
     let filename = null;
 
     if (Object.keys(req.files).length === 1){
-      
+
       let number = Math.floor(Math.random() * 9999);
       filename = number + thumbnail.name;
       let normalizedPath = require("path").join(__dirname, "../public/img/projects/")
