@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>Home</title>
+      <%- include("sections/header") %>
+  </head>
+      <%- include("sections/menu") %>
+  <body>
+
+
+    <div id="content">
+
+      <div class="contactContainer">
+
+          <div class="contactText">
+            <h1>Contact me!</h1>
+            <br/>
+            <div>
+            <FaGithub/> Github : <a href="https://github.com/heylookasquirrel">HeyLookASquirrel </a>
+            </div>
+            <br/>
+            <div>
+            <FaLinkedin/> LinkedIn : <a href="https://www.linkedin.com/in/jacob-gonzalez-8a5335142/">Jacob Gonzalez</a>
+            </div>
+            <br/>
+            <div>
+            <IoIosMail/> E-Mail : <a href="mailto:squirrel@squirrelnet.org"> Squirrel@squirrelnet.org </a>
+            </div>
+          </div>
+
+          <form action="mailto:squirrel@squirrelnet.org" method="post" enctype="text/plain" class="emailContainer">
+            <h1>Email</h1>
+            <br/>
+            <input type="text" name="name" class="loginField" placeholder="Name"/>
+            <input type="text" name="mail" class="loginField" placeholder="E-Mail"/>
+            <textarea name="comment" class="emailContent" placeholder="Content"></textarea>
+            <input type="submit" class="submit"  value="Send"/>
+          </form>
+
+
+
+        </div>
+
+    </div>
+
+
+
+  </body>
+
+  <%- include("sections/footer") %>
+
+</html>
